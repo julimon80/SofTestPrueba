@@ -1,0 +1,5 @@
+- Se logró automatizar exitosamente el flujo completo de compras en la aplicación DemoBlaze, validando tanto la selección de productos y valor.
+- Se generaron pruebas robustas y repetibles, apoyadas en buenas prácticas como la separación en Tasks, Questions, Interactions y UI.
+- Durante el desarrollo se presentó un inconveniente con una alerta de navegador (Web Alert), ya que este tipo de elementos no permiten obtener un XPath directo.
+- Para resolverlo, fue necesario implementar la gestión de alertas mediante la acción de aceptar el alert, lo cual garantizó la continuidad y estabilidad de la automatización.
+En general, el flujo se pudo automatizar de manera satisfactoria, quedando el proyecto preparado para ser extendido a futuros escenarios y nuevas validaciones.

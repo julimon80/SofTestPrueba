@@ -1,117 +1,74 @@
-﻿# Proyecto Base Celuweb
+﻿# Proyecto de Automatización - DemoBlaze 🛒
 
-En el siguiente proyecto solo se busca implementar el arquetipo para ejecutar el navegador (google) y ahorrar tiempo en la configuracion.
+Este proyecto implementa **pruebas automatizadas** utilizando **Serenity BDD** con el patrón **Screenplay**.  
+El objetivo principal es automatizar escenarios de compra en la página [DemoBlaze](https://www.demoblaze.com/),
+validando funcionalidades como agregar productos al carrito y verificar el total.
 
-Recordar el archivo chromedriver.exe instalarlo en la carpeta features y descargar la version que tengas en el navegador.
+---
 
-- Instalación
-- Estructura
+## 🚀 Tecnologías utilizadas
 
-## Instalación
+- **Java 17+**
+- **Gradle**
+- **Serenity BDD**
+- **Screenplay Pattern**
+- **JUnit**
+- **Cucumber**
+-
 
-Para usar serenity bdd con screenplay se deben seguir los siguientes pasos:
+---
 
-Instala Intellij IDEA:
+## 📂 Estructura del Proyecto
 
-- Descargarlo desde:
+src
+├── main
+│ └── java
+│ └── com.demoblaze
+│ ├── hooks # Configuración inicial y final (Before/After)
+│ ├── interactions # Interacciones personalizadas con la UI
+│ ├── questions # Consultas al estado de la aplicación
+│ ├── tasks # Acciones principales que ejecutan los actores
+│ ├── ui # Mapeo de elementos de interfaz de usuario (Targets)
+│ └── utils # Clases utilitarias y helpers
+└── test
+├── java # Step Definitions y Runners
+└── resources # Archivos de configuración y Features (.feature)
 
- ```bash
- https://www.jetbrains.com/es-es/idea/download/download-thanks.html?platform=windows&code=IIC
-```
-- Descarga e instala Java JDK 17 :
+## ⚙️ Configuración
+
+### 1. Clonar el proyecto
+
 ```bash
- https://download.oracle.com/java/17/archive/jdk-17.0.11_windows-x64_bin.exe (sha256 )
-```
-- Descargar e instalar Gradle 7.6.4:
- ```bash
- https://gradle.org/next-steps/?version=7.6.4&format=bin
-```
-- Descargar de chromium.org la versión de navegador instalado:
- ```bash
- https://googlechromelabs.github.io/chrome-for-testing/
+git clone https://github.com/tuusuario/demoblaze-serenity.git
+cd demoblaze-serenity
+
 ```
 
-## Estructura
+### 2. Ejecutar el test
+
 ```bash
-Project/
-│
-├── src/
-│   ├── main/
-│   │   └── java/
-│   │       └── project/
-│   │           ├── questions/
-│   │           │   ├── ExampleQuestion.java
-│   │           ├── tasks/
-│   │           │   ├── ExampleTask.java
-│   │           ├── interactions/
-│   │           │   ├── ExampleInteraction.java
-│   │           ├── ui/
-│   │           │   ├── ExampleLocators.java
-│   │           └── utils/
-│   │               ├── ExampleUtil.java
-│   │
-│   └── test/
-│       └── java/
-│           └── project/
-│               ├── TestCases/
-│               │   ├── ExampleTest.java
-│               ├── stepdefinitions/
-│               │   ├── ExampleStepDefinitions.java
-│               ├── runners/
-│               │   ├── ExampleTestRunner.java
-│               ├── resources/
-│               │   ├── features/
-│               │   │   ├── ExampleFeature.feature
-│               │   └── serenity.conf
-│               │   └── chromedriver.exe
-│
-├── build.gradle
-└── README.md
-
-```
-Explicación
-
-Este proyecto sigue el patrón Screenplay utilizando Serenity BDD y Cucumber.
-
-- Los tests se dividen en Tasks (acciones que los actores realizan) y Questions (verificaciones).
-- Los locators y otros elementos relacionados con las páginas están en la carpeta ui.
-- Los step definitions de Cucumber vinculan los archivos .feature con las Tasks y Questions de Screenplay.
-
-## Cambiar link de la pagina
-Ubicarse en el archivo de serenity.conf y en la linea 31 ubicar las enviroments, remplazar el link por el deseado
-```bash
-Project/
-│
-├── src/
-│   └── test/
-│       └── java/
-│           └── project/
-│               ├── resources/
-│               │   ├── features/
-│               │   │   ├── ExampleFeature.feature
-│               │   └── serenity.conf
-│
-///////////////////////////////
-environments {
-  default {
-    webdriver.base.url = "https://www.example.com//"
-  }
-   default {
-        webdriver.map.url = "https://www.example.com/"
-      }
-}
+./gradlew clean test aggregate
 ```
 
-```
-Informacion adiccional:
-- Hooks: Configuran el entorno antes de las pruebas.
-- Interactions: Definen acciones que los actores pueden realizar.
-- Questions: Permiten consultar el estado actual de la aplicación.
-- Tasks: Agrupan interacciones para realizar acciones complejas.
-- UI: Define selectores para los elementos de la interfaz de usuario.
-- Utils: Métodos de utilidad para reutilizar en todo el proyecto.
-- Runners: Ejecutan las pruebas especificadas en los archivos .feature.
-- Step Definitions: Conectan los pasos definidos en los archivos .feature con el código que ejecuta esos pasos.
-- Feature Files: Definen los escenarios de prueba en lenguaje Gherkin, como "Cuando el usuario busca, entonces debería ver un resultado".
-- serenity.conf: Configura los detalles de tu proyecto, como la URL de la aplicación y el navegador para las pruebas.
-```
+### 📝 Escenarios automatizados
+
+Esquema del escenario: Comprar productos
+Dado el usuario quiere agregar <productos> productos al carrito
+Cuando el usuario va al carrito de compras
+Entonces el usuario deberia ver los <productos> productos en el carrito
+Y el usuario deberia ver el total de los productos en el carrito
+Ejemplos:
+| productos |
+| 2 |
+
+### ✅ Reportes
+
+target/site/serenity/index.html
+
+### 📌 Autor
+
+julian Casafus
+
+QA Automation Engineer
+
+✉️ casafus1995@gmail.com
