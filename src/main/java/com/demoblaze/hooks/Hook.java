@@ -8,14 +8,11 @@ import net.serenitybdd.screenplay.actors.OnlineCast;
 import static com.demoblaze.utils.Constants.ACTOR;
 
 
-
 public class Hook {
     @Before
     public void loginWithCredentials() {
         OnStage.setTheStage(new OnlineCast());
         OnStage.theActorCalled(ACTOR);
-        OnStage.theActorInTheSpotlight().attemptsTo(
-                OpenWeb.browserURL()
-        );
+
     }
 }

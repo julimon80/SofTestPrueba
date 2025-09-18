@@ -39,18 +39,25 @@ src
 ### 1. Clonar el proyecto
 
 ```bash
-git clone https://github.com/tuusuario/demoblaze-serenity.git
-cd demoblaze-serenity
+git clone https://github.com/tuusuario/https://github.com/julimon80/SofTestPrueba.git
+cd SofTestPrueba
 
 ```
 
 ### 2. Ejecutar el test
 
+Esta Ejecucion se hace con la dependencia de Boni Garcia, se recomienda tener chrome instalado.
+
 ```bash
 ./gradlew clean test aggregate
 ```
+o gradle ya que el build tiene seteado por default las demas task 
 
-### 📝 Escenarios automatizados
+```bash
+gradle
+```
+
+### 📝 Escenarios automatizado -Ejemplo
 
 Esquema del escenario: Comprar productos
 Dado el usuario quiere agregar <productos> productos al carrito

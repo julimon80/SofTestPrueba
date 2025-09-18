@@ -16,5 +16,10 @@ public class HomeUI {
                 .located(By.xpath("//div[@id='tbodyid']//div[" + producto + "]//h5"));
     }
 
+    public static Target BTN_LOGIN = Target.the("btn login")
+            .locatedBy("//a[contains(@id,'login2')]");
+
+    public static Target TXT_WELCOME = Target.the("txt welcome")
+            .locatedBy("//a[@class='nav-link'][contains(.,'Welcome')]");
 
 }

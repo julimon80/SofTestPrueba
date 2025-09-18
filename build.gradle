@@ -1,5 +1,5 @@
 buildscript {
-    ext.serenityCoreVersion = '3.3.0'
+    ext.serenityCoreVersion = '3.3.4'
     repositories {
         mavenCentral()
     }
@@ -62,25 +62,13 @@ dependencies {
     implementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
     implementation "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
     implementation "org.assertj:assertj-core:${assertJVersion}"
-    implementation "ch.qos.logback:logback-classic:${logbackVersion}"
-    implementation group: 'org.apache.pdfbox', name: 'pdfbox', version: '2.0.27'
 
-    compileOnly "org.projectlombok:lombok:${lombokVersion}"
-    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
-    testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
-    testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
 
 }
 test {
     useJUnitPlatform()
     testLogging.showStandardStreams = true
     systemProperties System.getProperties()
-}
-
-serenity {
-    testRoot = "co.com.screenplay.project.runners"
-    requirementsBaseDir = "src/test/resources/features"
-    reports = ["single-page-html"]
 }
 
 gradle.startParameter.continueOnFailure = true

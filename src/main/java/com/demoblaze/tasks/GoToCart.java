@@ -1,5 +1,6 @@
 package com.demoblaze.tasks;
 
+import com.demoblaze.interactions.RecordCartQuantity;
 import com.demoblaze.ui.CartUI;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.serenitybdd.screenplay.Actor;
@@ -17,18 +18,12 @@ public class GoToCart implements Task {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-
-
         actor.attemptsTo(
                 WaitUntil.the(CartUI.BTN_CARRITO, isVisible()).forNoMoreThan(10).seconds(),
                 Click.on(CartUI.BTN_CARRITO),
-                WaitUntil.the(CartUI.TXT_NUM_PRODUCTOS, isVisible()).forNoMoreThan(10).seconds()
+                WaitUntil.the(CartUI.TXT_NUM_PRODUCTOS, isVisible()).forNoMoreThan(10).seconds(),
+                RecordCartQuantity.now()
         );
-
-        List<WebElementFacade> productos = CartUI.TXT_NUM_PRODUCTOS.resolveAllFor(actor);
-        int cantidad = productos.size();
-        actor.remember("cantidad", cantidad);
-        System.out.println("Número de productos en carrito: " + cantidad);
     }
 
     public static GoToCart go() {

@@ -1,13 +1,10 @@
 package com.demoblaze.stepdefinition;
 
 
-import com.demoblaze.interactions.InteractionsTask;
 import com.demoblaze.questions.ProductsCartQuestion;
-import com.demoblaze.questions.ValueCartQuestion;
+import com.demoblaze.questions.TotalCart;
 import com.demoblaze.tasks.AddtoCartTask;
-
 import com.demoblaze.tasks.GoToCart;
-import io.cucumber.datatable.DataTable;
 import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Dado;
 import io.cucumber.java.es.Entonces;
@@ -41,10 +38,11 @@ public class BuyProductStepDefinition {
         );
     }
 
-    @Y("el usuario deberia ver el total de los productos en el carrito")
-    public void elUsuarioDeberiaVerElTotalDeLosProductosEnElCarrito() {
+    @Y("el usuario deberia ver el total de los {} productos en el carrito")
+    public void elUsuarioDeberiaVerElTotalDeLosProductosEnElCarrito(int productos) {
+        Integer totalEsperado = OnStage.theActorInTheSpotlight().recall("total");
         OnStage.theActorInTheSpotlight().should(
-                seeThat(ValueCartQuestion.es(), equalTo(true))
+                seeThat(TotalCart.de(productos), equalTo(totalEsperado))
         );
     }
 }

@@ -1,6 +1,7 @@
 package com.demoblaze.tasks;
 
 import com.demoblaze.interactions.InteractionsTask;
+import com.demoblaze.interactions.GetPrice;
 import com.demoblaze.ui.CartUI;
 import com.demoblaze.ui.HomeUI;
 
@@ -28,14 +29,11 @@ public class AddtoCartTask implements Task {
                 WaitUntil.the(HomeUI.BTN_PRODUCTO(1), isVisible()).forNoMoreThan(10).seconds()
         );
 
-        int total = 0;
 
         for (int i = 1; i <= productoIndex; i++) {
-            String precioTexto = HomeUI.TXT_PRECIO(i).resolveFor(actor).getText(); // ej: "$360"
-            int precio = Integer.parseInt(precioTexto.replace("$", "").trim());
-            total += precio;
 
             actor.attemptsTo(
+                    GetPrice.delProducto(i),
                     Click.on(HomeUI.BTN_PRODUCTO(i)),
                     Click.on(CartUI.BTN_ANADIR_CARRITO),
                     InteractionsTask.acceptAlert(),
@@ -43,9 +41,7 @@ public class AddtoCartTask implements Task {
             );
         }
 
-        actor.remember("total", total);
 
-        System.out.println("Total acumulado: " + total);
 
     }
 
