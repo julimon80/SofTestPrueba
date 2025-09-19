@@ -9,8 +9,7 @@ import org.junit.runner.RunWith;
         plugin = {"pretty"},
         features = "src/test/resources/features/",
         glue = {"com.demoblaze.stepdefinition", "com.demoblaze.hooks"},
-        snippets = CucumberOptions.SnippetType.CAMELCASE,
-        tags = "@loginIncorrecto"
+        snippets = CucumberOptions.SnippetType.CAMELCASE
 )
 public class GlobalRunner {
 }
